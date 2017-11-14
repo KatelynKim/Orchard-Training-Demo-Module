@@ -1,4 +1,5 @@
 ﻿using System;
+using OrchardHUN.TrainingDemo.Activities;
 using OrchardHUN.TrainingDemo.Commands;
 using OrchardHUN.TrainingDemo.Controllers;
 using OrchardHUN.TrainingDemo.Drivers;
@@ -6,6 +7,7 @@ using OrchardHUN.TrainingDemo.Filters;
 using OrchardHUN.TrainingDemo.Handlers;
 using OrchardHUN.TrainingDemo.Models;
 using OrchardHUN.TrainingDemo.Services;
+using OrchardHUN.TrainingDemo.Tokens;
 
 /* 
  * In this file, you'll find the index of the whole (or at least most of the) module's classes for easier navigation 
@@ -163,14 +165,21 @@ namespace OrchardHUN.TrainingDemo
             Factory<DateTimeCachingService>();
             Factory<CacheController>();
 
+            // Owin middleware
+            Factory<OwinMiddleware>();
+
+            // Tokens
+            Factory<UtcNowTokens>();
+
+            // Workflows Activities
+            Factory<WarningActivity>();
 
             // Unit tests
-                // IClock
-                Factory<DateTimeCachingService>();
-
-                /* Check out the OrchardHUN.TrainingDemo.Tests folder in the project folder of this module for a complete
-                 * unit test, starting with StartHere.txt
-                 */
+            // IClock
+            Factory<DateTimeCachingService>();
+            /* Check out the OrchardHUN.TrainingDemo.Tests folder in the project folder of this module for a complete
+            * unit test, starting with StartHere.txt
+            */
         }
     }
 }
